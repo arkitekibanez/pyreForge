@@ -1,0 +1,7 @@
+{
+    "name": "py_ArchExtension for pyRevit",
+    "author": "Luis Ibanez",
+    "description": "A set of custom productivity tools for Revit.",
+    "revit_version": "2021-2024",
+    "version": "1.0.0"
+}
