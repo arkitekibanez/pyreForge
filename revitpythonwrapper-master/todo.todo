@@ -1,0 +1,111 @@
+2.0 Breaking Changes:
+☐ Rename Pick methods to to Pick.element, etc
+☐ (?) Move TaskDialog to ui.TaskDialog; move forms out of ui?
+☐ remove doc and ui from rpw.doc, rpw.uidoc
+
+Core:
+☐ CRITICAL: Complete Deprecated methods for optional wrapping for Views
+✔ CRITICAL: Complete Deprecated methods for optional wrapping for Collection and Selection @done (17-10-04 18:08)
+☐ CRITICAL: Complete Deprecated methods for Tests!
+☐ See if collector could inherit from ElementSet
+☐ Make SelectableMix in for .select() (retrieves ._selectable attribute)
+✔ CRITICAL: Complete Deprecated methods for optional wrapping: family.symbols > family.get_symbols @done (17-10-02 20:52)
+✔ CRITICAL: Complete Deprecated methods for optional wrapping for collector @done (17-10-02 20:53)
+> Sometimes are wrapped, sometimes are unwrapped. That's bad! Collector uses .wrapped_elements
+> Ideally, it would all be wrapped, but since not all elements have working wrappers, that would creat an inconsistency
+✔ Add Erro Handling to Pick. methods @done (17-10-02 19:32)
+
+✘ Add @ensure to all internal methods that require Transaction @cancelled (17-10-02 19:32)
+✘ Investigate if possible to fake type so Elements can be passed back. @cancelled (17-10-02 19:32)
+
+Forms:
+☐ Add Form Wrapper for exit_on_close FlexForm + Console
+☐ Forms  - List Form
+☐ Merge Ehsan's Forms
+
+Others Merge:
+☐ Transaction (Status)
+☐ Combine/Adapt Logger to coexist with pyrevit
+☐ AutoCollector
+
+Base Wrappers:
+✔ Transaction @done
+✔ Collector @done
+✔ Selection @done
+✔ Parameters @done
+
+Base Element:
+✔ Abstraction Wrapper @done
+✔ Getter/Setter @done
+✔ Collection @done
+
+Element Wrappers:
+☐ Document
+☐ Level
+☐ ViewPort
+☐ Floor
+☐ Door
+☐ Window
+☐ Schedule
+☐ Worksets
+☐ Links
+☐ Material
+☐ BoundingBox
+✔ AssemblyInstance + AssemblyType @done (17-10-02 19:36)
+✔ Curve, Line, Ellipse, Circle
+✔ LinePatternElement
+✔ Sheet @done
+✔ Reference @done
+✔ View @done
+✔ Instance @done
+✔ Symbol @done
+✔ Family @done
+✔ Category @done
+✔ WallInstance @done
+✔ WallSymbol @done
+✔ WallFamily @done
+✔ WallCategory @done
+✔ Room @done
+✔ Area @done
+✔ AreaSchema @done
+✔ BaseObject @done
+✔ BaseObjectWrapper @done
+✔ Element @done
+
+Graphics:
+✔ OverrideGraphicSettings @done
+☐ Filters
+☐ Templates
+
+Tests Debt:
+✔ Clean up + Separate @done
+☐ Room
+☐ Area
+☐ Geometry
+
+Collector:
+☐ Add Missing Filters
+✔ Add Exclusion Filter
+✔ Add And Or Filters
+✔ Clean up filter @done
+✔ Add Slow Filters @done
+✔ Add Quick Filters @done
+✔ Add Where Lambda @done
+✔ Add Level Filter @done
+
+Geometry:
+✔ Point @done
+✔ PointCollection @done
+
+Selection:
+✔ Add Pick / Filters @done
+
+Forms:
+✔ Multi-input Forms @done
+
+Geometry:
+✔ To Element Ids @done
+✔ To Elements @done
+
+Fix:
+✔ Fix `enforce_type` params in Element Wrappers @done
