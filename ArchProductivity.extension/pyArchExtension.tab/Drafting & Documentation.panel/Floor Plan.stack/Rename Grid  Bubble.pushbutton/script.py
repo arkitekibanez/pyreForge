@@ -1,5 +1,5 @@
 # Title and documentation strings
-__title__ = "Auto Rename \nGrid Bubbles"
+__title__ = "Rename Grids"
 __doc__ = """Version: 1.1
 Date: = 05.04.2024
 __________________________________________________________________

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__title__ = "Create Plan \nViews"
+__title__ = "Create Plans"
 __doc__ = """Version = 1.0
 Date    = 26.06.2024
 __________________________________________________________________

@@ -1,4 +1,16 @@
 # -*- coding: utf-8 -*-
+from Autodesk.Revit.DB import *
+from Autodesk.Revit.UI import *
+from Autodesk.Revit.DB.Structure import StructuralType  # Import StructuralType explicitly
+import clr
+import os
+
+clr.AddReference('RevitAPI')
+clr.AddReference('RevitServices')
+
+uidoc = __revit__.ActiveUIDocument
+doc = uidoc.Document
+
 __title__ = "Convert \nIn-Place \n(WIP)"
 __doc__ = """Version = 1.0
 Date    = 05.04.2024
@@ -17,19 +29,6 @@ To-Do:
 - 
 __________________________________________________________________
 Author: Luis Ibanez"""
-
-import clr
-import os
-
-clr.AddReference('RevitAPI')
-clr.AddReference('RevitServices')
-
-from Autodesk.Revit.DB import *
-from Autodesk.Revit.UI import *
-from Autodesk.Revit.DB.Structure import StructuralType  # Import StructuralType explicitly
-
-uidoc = __revit__.ActiveUIDocument
-doc = uidoc.Document
 
 
 def select_model_in_place_family():
