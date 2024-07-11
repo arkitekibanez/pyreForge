@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__title__ = "Delete \nRedundant Rooms"
+__title__ = "Del Duplicate Rooms"
 __doc__ = """Version = 1.3
 Date    = 09.07.2024
 __________________________________________________________________
@@ -26,8 +26,9 @@ from Autodesk.Revit.UI import *
 # Main function
 def main():
     # Get the Revit application and document
-    app = __revit__.Application
-    doc = __revit__.ActiveUIDocument.Document
+    uiapp = __revit__
+    app = uiapp.Application
+    doc = uiapp.ActiveUIDocument.Document
 
     # Identify rooms to be deleted
     rooms_to_delete = get_rooms_to_delete(doc)
