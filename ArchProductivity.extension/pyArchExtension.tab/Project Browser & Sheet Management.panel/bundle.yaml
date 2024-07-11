@@ -1,7 +1,5 @@
 layout:
-  - Sheet Cases
-  - View Cases
-  - Family Names
+  - Case Type
   - Prefix Suffix
   - LockViewports
 
