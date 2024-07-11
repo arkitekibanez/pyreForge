@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__title__ = "Toggle Point Cloud Links"
+__title__ = "Toggle PointCloud"
 __doc__ = """Version = 1.0
 Date    = 11.07.2024
 __________________________________________________________________
