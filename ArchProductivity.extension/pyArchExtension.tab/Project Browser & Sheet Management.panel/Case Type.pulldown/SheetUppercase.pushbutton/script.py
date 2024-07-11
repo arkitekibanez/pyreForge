@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__title__ = "Sheets:Uppercase"
+__title__ = "Sheets>Uppercase"
 __doc__ = """Version = 1.0
 Date    = 05.04.2024
 __________________________________________________________________
