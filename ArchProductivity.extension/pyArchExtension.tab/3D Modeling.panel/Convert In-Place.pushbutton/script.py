@@ -16,8 +16,8 @@ __doc__ = """Version = 1.0
 Date    = 05.04.2024
 __________________________________________________________________
 Description:
-Work in progress, this script attempt to convert in-place families to
-loadable families.
+Work in Progress, current script creates a duplicate of the selected
+in place family.
 __________________________________________________________________
 How-to:
 -> Just click on the button
@@ -26,7 +26,7 @@ Last update:
 - [05.04.2024] - 1.0 RELEASE
 __________________________________________________________________
 To-Do:
-- 
+Code to be further developed.
 __________________________________________________________________
 Author: Luis Ibanez"""
 

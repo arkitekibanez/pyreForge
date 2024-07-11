@@ -1,18 +1,19 @@
-__title__ = 'Pin All CAD Links'
+__title__ = 'Pin/Unpin CAD Links'
 __doc__ = """Version = 1.0
-Date    = 05.04.2024
+Date    = 11.07.2024
 __________________________________________________________________
 Description:
-Pin all CAD links
+Work-in Progress!
+Toggle pin and unpin all CAD links. 
 __________________________________________________________________
 How-to:
 -> Just click on the button
 __________________________________________________________________
 Last update:
-- [05.04.2024] - 1.0 RELEASE
+- [11.07.2024] - 1.0 RELEASE
 __________________________________________________________________
 To-Do:
-- 
+Have some bugs, to be fixed on the next release.
 __________________________________________________________________
 Author: Luis Ibanez"""
 
@@ -25,24 +26,21 @@ from Autodesk.Revit.DB import FilteredElementCollector, BuiltInCategory, Transac
 app = __revit__.Application
 doc = __revit__.ActiveUIDocument.Document
 
-
-def pin_all_cad_links():
+def toggle_pin_cad_links():
     # Start a transaction
-    t = Transaction(doc, "Pin All CAD Links")
+    t = Transaction(doc, "Toggle Pin/Unpin CAD Links")
     t.Start()
 
     # Get all CAD links
     collector = FilteredElementCollector(doc).OfClass(CADLinkType)
     cad_links = collector.ToElements()
 
-    # Pin each CAD link
+    # Toggle pin/unpin for each CAD link
     for link in cad_links:
-        if not link.Pinned:
-            link.Pinned = True
+        link.Pinned = not link.Pinned
 
     # Commit the transaction
     t.Commit()
 
-
-# Call the function to pin all CAD links
-pin_all_cad_links()
+# Call the function to toggle pin/unpin all CAD links
+toggle_pin_cad_links()
