@@ -4,6 +4,7 @@ __doc__ = """Version = 1.0
 Date    = 11.07.2024
 __________________________________________________________________
 Description:
+Work in Progress!
 This script allows users to toggle the visibility of AutoCAD links in the active view.
 __________________________________________________________________
 How-to:
@@ -12,6 +13,9 @@ How-to:
 __________________________________________________________________
 Last update:
 - [11.07.2024] - 1.0 RELEASE
+__________________________________________________________________
+To-Do:
+Have some bugs, to be fixed on the next release.
 __________________________________________________________________
 Author: Luis Ibanez"""
 
