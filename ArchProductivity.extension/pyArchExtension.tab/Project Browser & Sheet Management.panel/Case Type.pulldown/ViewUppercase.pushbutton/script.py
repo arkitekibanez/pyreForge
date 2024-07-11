@@ -1,9 +1,9 @@
-__title__ = "AllViewsToPascalCase"
+__title__ = "Views>Uppercase"
 __doc__ = """Version = 1.0
 Date    = 05.04.2024
 _____________________________________________________________________
 Description:
-Change all view titles to pascal case.
+Change all view titles to uppercase.
 _____________________________________________________________________
 How-to:
 -> Just click on the button
@@ -25,7 +25,7 @@ doc = __revit__.ActiveUIDocument.Document
 
 # Show a warning prompt before proceeding
 warning_dialog = TaskDialog("Warning")
-warning_dialog.MainContent = "This operation will change all view titles to pascal case. Do you want to proceed?"
+warning_dialog.MainContent = "This operation will change all view titles to uppercase. Do you want to proceed?"
 warning_dialog.CommonButtons = TaskDialogCommonButtons.Yes | TaskDialogCommonButtons.No
 warning_dialog.DefaultButton = TaskDialogResult.Yes
 
@@ -44,14 +44,13 @@ if result == TaskDialogResult.Yes:
     with Transaction(doc, 'Update View Names') as t:
         t.Start()
 
-        # Loop through each view and update its name to pascal case
+        # Loop through each view and update its name to uppercase
         for view in views:
             # Check if the view is a system family view, detail view, legend, or schedule
             if view.ViewType in [ViewType.FloorPlan, ViewType.Elevation, ViewType.Section, ViewType.Detail, ViewType.ThreeD,
                                  ViewType.Legend, ViewType.Schedule, ViewType.CeilingPlan]:
                 view_name = view.Name
-                words = view_name.split()
-                updated_view_name = ''.join(word.capitalize() for word in words)  # Change to pascal case
+                updated_view_name = view_name.upper()  # Change to uppercase
 
                 # Check if the updated name is valid
                 if is_valid_name(updated_view_name):
@@ -69,7 +68,7 @@ if result == TaskDialogResult.Yes:
 
     # Show a success message
     task_dialog = TaskDialog("Success")
-    task_dialog.MainContent = "All View names changed to pascal case successfully"
+    task_dialog.MainContent = "All View names changed to uppercase successfully"
     task_dialog.Show()
 else:
     # Show a popup dialog when operation is cancelled

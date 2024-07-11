@@ -1,9 +1,9 @@
-__title__ = "PascalCase"
+__title__ = "Family>Uppercase"
 __doc__ = """Version = 1.0
 Date    = 26.06.2024
 __________________________________________________________________
 Description:
-Change the families names to PascalCase.
+Change the families names to uppercase.
 Note: system default will be ignored.
 __________________________________________________________________
 How-to:
@@ -39,16 +39,12 @@ if result == TaskDialogResult.Yes:
     # Debug: Print count of loaded families
     print("Found %d loaded families." % len(loaded_families))
 
-    # Function to convert string to PascalCase
-    def to_pascal_case(s):
-        return ''.join(word.capitalize() for word in s.split())
-
     # Loop through each loaded family and update its name
     with Transaction(doc, 'Update Loaded Family Names') as t:
         t.Start()
         for family_symbol in loaded_families:
             family_name = family_symbol.Family.Name
-            updated_family_name = to_pascal_case(family_name)  # Change to PascalCase
+            updated_family_name = family_name.upper()  # Change to uppercase
 
             # Check if the updated name is different
             if family_name!= updated_family_name:
@@ -59,7 +55,7 @@ if result == TaskDialogResult.Yes:
 
     # Show a pop-up dialog when successful
     task_dialog = TaskDialog("Success")
-    task_dialog.MainContent = "All Loaded Family names changed to PascalCase successfully"
+    task_dialog.MainContent = "All Loaded Family names changed to UPPERCASE successfully"
     task_dialog.Show()
 else:
     # Show a message if the user cancels

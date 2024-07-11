@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-__title__ = "Sheet:Lowercase"
+__title__ = "Sheets>PascalCase"
 __doc__ = """Version = 1.0
 Date    = 05.04.2024
 __________________________________________________________________
 Description:
-Set all sheet titles to lowercase
+Set all sheet titles to Pascal Case
 __________________________________________________________________
 How-to:
 -> Just click on the button
@@ -26,7 +26,7 @@ doc = __revit__.ActiveUIDocument.Document
 
 # Show a warning prompt before proceeding
 warning_dialog = TaskDialog("Warning")
-warning_dialog.MainContent = "This operation will change all sheet titles to lowercase. Do you want to proceed?"
+warning_dialog.MainContent = "This operation will change all sheet titles to Pascal Case. Do you want to proceed?"
 warning_dialog.CommonButtons = TaskDialogCommonButtons.Yes | TaskDialogCommonButtons.No
 warning_dialog.DefaultButton = TaskDialogResult.Yes
 
@@ -42,13 +42,14 @@ if result == TaskDialogResult.Yes:
         for sheet in sheets:
             sheet_name = sheet.Name
             updated_sheet_name = sheet_name.lower()
-            if sheet_name!= updated_sheet_name:
+            updated_sheet_name = str.join(" ", [word.capitalize() for word in updated_sheet_name.split()])
+            if sheet_name != updated_sheet_name:
                 sheet.Name = updated_sheet_name
         t.Commit()
 
     # Show a smaller pop-up dialogue box when successful
     task_dialog = TaskDialog("Success")
-    task_dialog.MainContent = "All Drawing title changed to Lowercase Succesfully"
+    task_dialog.MainContent = "All Drawing title changed to Pascal case Succesfully"
     task_dialog.Show()
 else:
     # Show a popup dialog when operation is cancelled
