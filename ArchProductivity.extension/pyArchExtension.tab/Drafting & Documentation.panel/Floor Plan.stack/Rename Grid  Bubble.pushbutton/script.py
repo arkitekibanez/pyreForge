@@ -1,7 +1,7 @@
 # Title and documentation strings
 __title__ = "Rename Grids"
-__doc__ = """Version: 1.1
-Date: = 05.04.2024
+__doc__ = """Version: 1.2
+Date: 15.07.2024
 __________________________________________________________________
 Description:
 This script automates the process of updating grid numbering in a Revit project view. 
@@ -13,6 +13,11 @@ How-to:
 1. The script identifies and sorts grids into vertical and horizontal orientations.
 2. Vertical grids are numbered sequentially starting from 1 upwards.
 3. Horizontal grids are labeled alphabetically (A, B, C, etc.) starting from the topmost grid.
+__________________________________________________________________
+Last update:
+- [15.07.2024] - 1.2 RELEASE (added a warning dialog at the beginning)
+- [11.07.2024] - 1.1 RELEASE (added input form for prefix and suffix)
+- [05.04.2024] - 1.0 RELEASE (added input form for prefix and suffix)
 __________________________________________________________________
 Author: Luis Ibanez"""
 
@@ -26,6 +31,12 @@ from Autodesk.Revit.DB import *
 from System.Collections.Generic import List
 from System.Windows.Forms import Form, Label, TextBox, Button, DialogResult
 from System.Drawing import Point
+
+# Function to show a warning dialog
+def show_warning_dialog():
+    warning_msg = """This action will update the grid numbering in the active view.
+To revert or remove the prefix/suffix, simply rerun the script again and leave the input dialog blank."""
+    TaskDialog.Show("Warning", warning_msg)
 
 # Define the input form for prefix and suffix
 class PrefixSuffixForm(Form):
@@ -187,6 +198,9 @@ def update_grid_with_prefix_suffix(prefix, suffix):
 
 # Main execution flow
 if __name__ == "__main__":
+    # Show warning dialog
+    show_warning_dialog()
+
     # Show prefix and suffix input form
     prefix, suffix = get_prefix_suffix()
 
@@ -195,4 +209,3 @@ if __name__ == "__main__":
         update_grid_with_prefix_suffix(prefix, suffix)
     else:
         TaskDialog.Show("Cancelled", "Operation cancelled by user.")
-

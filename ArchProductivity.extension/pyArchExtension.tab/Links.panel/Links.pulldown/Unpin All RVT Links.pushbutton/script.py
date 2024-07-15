@@ -3,7 +3,7 @@ __doc__ = """Version = 1.0
 Date    = 05.04.2024
 __________________________________________________________________
 Description:
-Unpin all links.
+Unpin all Revit links.
 __________________________________________________________________
 How-to:
 -> Just click on the button
