@@ -15,6 +15,7 @@ How-to:
 displayed indicating this.
 __________________________________________________________________
 Last update:
+- [18.07.2024] - 1.1 RELEASE (Removed the float value from the output display)
 - [05.04.2024] - 1.0 RELEASE
 __________________________________________________________________
 To-Do:
@@ -48,7 +49,7 @@ else:
 
     # Show a TaskDialog with the total file size
     task_dialog = TaskDialog("Success")
-    task_dialog.MainContent = ("Total file size: {:.2f} MB.\n"
+    task_dialog.MainContent = ("Total file size: {} MB.\n"
                                "Note: Revit file size should not exceed 150-200MB. "
                                "Consider splitting models and linking files if it's within this file size range.").format(total_file_size_mb)
     task_dialog.Show()
