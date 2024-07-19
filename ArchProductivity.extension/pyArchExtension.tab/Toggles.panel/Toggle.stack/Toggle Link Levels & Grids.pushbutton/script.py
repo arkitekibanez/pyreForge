@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__title__ = "Toggle Link \nLevels & Grids"
+__title__ = "Link Levels & Grids"
 __doc__ = """Version = 1.0
 Date    = 11.07.2024
 __________________________________________________________________

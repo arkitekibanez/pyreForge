@@ -8,7 +8,7 @@ from System.Windows.Forms import Form, CheckBox, Button, Label
 from System.Drawing import Point, Size
 
 # Title and documentation strings
-__title__ = "Grid Bubbles \nVisibility"
+__title__ = "Grid Bubble View"
 __doc__ = """Version: 1.0
 Date: 15.07.2024
 __________________________________________________________________

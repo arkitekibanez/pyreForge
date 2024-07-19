@@ -1,4 +1,4 @@
-__title__ = "Missing Door \nTag Checker"
+__title__ = "Door Tag\nFinder"
 __doc__ = """Version = 1.0
 Date    = 26.06.2024
 __________________________________________________________________
