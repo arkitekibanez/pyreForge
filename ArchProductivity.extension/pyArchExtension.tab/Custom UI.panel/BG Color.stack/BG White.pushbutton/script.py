@@ -9,7 +9,7 @@ How-to:
 - Just click on the button to change the background color.
 _____________________________________________________________________
 Last update:
-- [05.04.2024] - 1.1 RELEASE
+- [05.04.2024] - v1.0.0 Initial release
 _____________________________________________________________________
 Author: Luis Ibanez"""
 

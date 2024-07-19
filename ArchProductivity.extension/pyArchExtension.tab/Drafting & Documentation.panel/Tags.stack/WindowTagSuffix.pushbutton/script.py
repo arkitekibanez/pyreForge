@@ -10,8 +10,8 @@ How-to:
 -> Just click on the button
 __________________________________________________________________
 Last update:
-- [05.04.2024] - 1.1 RELEASE (update tooltip)
-- [05.04.2024] - 1.0 RELEASE (initial release)
+- [18.07.2024] - v1.0.1 Update tooltip
+- [05.04.2024] - v1.0.0 Initial release
 __________________________________________________________________
 To-Do:
 - 

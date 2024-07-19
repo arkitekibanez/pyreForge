@@ -10,8 +10,8 @@ How-to:
 -> Just click on the button
 __________________________________________________________________
 Last update:
-- [26.06.2024] - 1.1 RELEASE (added fuction to support subtypes conversion)
-- [26.06.2024] - 1.0 RELEASE
+- [26.06.2024] - v1.0.1 added function to support subtypes conversion
+- [26.06.2024] - v1.0.0 Initial release
 __________________________________________________________________
 To-Do:
 - 

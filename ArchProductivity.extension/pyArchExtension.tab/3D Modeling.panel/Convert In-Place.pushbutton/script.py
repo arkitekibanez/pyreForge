@@ -23,7 +23,7 @@ How-to:
 -> Just click on the button
 __________________________________________________________________
 Last update:
-- [05.04.2024] - 1.0 RELEASE
+- [05.04.2024] - v 1.0.0 Work-in Progress
 __________________________________________________________________
 To-Do:
 Code to be further developed.

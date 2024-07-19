@@ -15,8 +15,8 @@ How-to:
 displayed indicating this.
 __________________________________________________________________
 Last update:
-- [18.07.2024] - 1.1 RELEASE (Removed the float value from the output display)
-- [05.04.2024] - 1.0 RELEASE
+- [18.07.2024] - v1.0.1 Removed the floating value from the output display
+- [05.04.2024] - v1.0.0 Initial release
 __________________________________________________________________
 To-Do:
 - 

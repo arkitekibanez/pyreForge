@@ -11,8 +11,8 @@ How-to:
 -> Just click on the button
 __________________________________________________________________
 Last update:
-- [18.07.2024] - 1.1 RELEASE (Added file size calculation for each family and arranged output in specified format)
-- [15.07.2024] - 1.0 RELEASE (Initial release)
+- [18.07.2024] - v1.0.1 Added file size calculation for each family and arranged output in specified format
+- [15.07.2024] - v.0.0 Initial release
 __________________________________________________________________
 Author: Luis Ibanez"""
 

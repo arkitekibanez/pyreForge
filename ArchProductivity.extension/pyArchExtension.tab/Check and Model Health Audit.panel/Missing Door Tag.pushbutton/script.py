@@ -16,7 +16,7 @@ indicates the doors without associated tags, and take necessary
 actions to tag them appropriately.
 _________________________________________________________________
 Last update:
-- [26.06.2024] - 1.0 RELEASE
+- [26.06.2024] - v1.0.0 Initial Release
 __________________________________________________________________
 To-Do:
 - 

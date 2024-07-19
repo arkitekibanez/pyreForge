@@ -11,7 +11,7 @@ How-to:
 - Just click on the button to execute the script.
 __________________________________________________________________
 Last update:
-- [05.04.2024] - 1.0 RELEASE
+- [05.04.2024] - v1.0.0 Initial release
 __________________________________________________________________
 Author: Luis Ibanez"""
 

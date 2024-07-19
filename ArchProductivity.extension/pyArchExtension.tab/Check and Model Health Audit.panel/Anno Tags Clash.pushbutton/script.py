@@ -1,11 +1,11 @@
 __title__ = "Anno Tags \nClash Checker"
-__doc__ = """Version = 1.1
-Date    = 06.07.2024
+__doc__ = """Version = 1.2
+Date    = 18.07.2024
 __________________________________________________________________
 Description:
 This script detects and highlights specified tags in the active 
-view that overlap with 3D elements such as walls, and columns. 
-It is designed to help users identify and address clashes 
+view that overlap with 3D elements such as walls, and columns, 
+ignoring leaders. It helps users identify and address clashes 
 between annotation tags and 3D model elements within their 
 Revit project.
 __________________________________________________________________
@@ -18,8 +18,9 @@ red in the active view.
 4. Non-overlapping tags will revert to their default black color.
 __________________________________________________________________
 Last update:
-- [06.07.2024] - 1.1 Updated to highlight specified tags when 
-overlapping with 3D elements
+- [18.07.2024] - v1.0.2 Updated to ignore leaders when checking 
+for overlaps with 3D elements.
+- [06.07.2024] - v1.0.1 Updated to highlight specified tags when 
 __________________________________________________________________
 To-Do:
 - 
@@ -71,12 +72,16 @@ element_categories = [
     BuiltInCategory.OST_Columns
 ]
 
-# Function to check overlap between annotation and 3D element
-def check_overlap_with_element(annotation, element):
-    # Get the bounding box of the annotation
-    annotation_bb = annotation.get_BoundingBox(active_view)
+# Function to check overlap between annotation tag and 3D element
+def check_overlap_with_element(tag, element):
+    # Check if the tag is a leader
+    if isinstance(tag, IndependentTag) and tag.HasLeader:
+        return False  # Ignore leaders
 
-    if annotation_bb is None:
+    # Get the bounding box of the tag head
+    tag_bb = tag.get_BoundingBox(active_view)
+
+    if tag_bb is None:
         return False
 
     # Get the bounding box of the 3D element
@@ -86,13 +91,13 @@ def check_overlap_with_element(annotation, element):
         return False
 
     # Check for overlap along X axis
-    x_overlap = (annotation_bb.Min.X <= element_bb.Max.X) and (annotation_bb.Max.X >= element_bb.Min.X)
+    x_overlap = (tag_bb.Min.X <= element_bb.Max.X) and (tag_bb.Max.X >= element_bb.Min.X)
 
     # Check for overlap along Y axis
-    y_overlap = (annotation_bb.Min.Y <= element_bb.Max.Y) and (annotation_bb.Max.Y >= element_bb.Min.Y)
+    y_overlap = (tag_bb.Min.Y <= element_bb.Max.Y) and (tag_bb.Max.Y >= element_bb.Min.Y)
 
     # Check for overlap along Z axis
-    z_overlap = (annotation_bb.Min.Z <= element_bb.Max.Z) and (annotation_bb.Max.Z >= element_bb.Min.Z)
+    z_overlap = (tag_bb.Min.Z <= element_bb.Max.Z) and (tag_bb.Max.Z >= element_bb.Min.Z)
 
     # If overlaps along all axes, consider it as overlapping
     return x_overlap and y_overlap and z_overlap
@@ -174,3 +179,4 @@ if result == TaskDialogResult.Yes:
         TaskDialog.Show("Colors Reverted", "The colors of the highlighted tags have been reverted to black.")
 else:
     TaskDialog.Show("Operation Cancelled", "The operation was cancelled by the user.")
+

@@ -12,7 +12,7 @@ How-to:
 2. Confirm the operation in the prompted dialog.
 __________________________________________________________________
 Last update:
-- [11.07.2024] - 1.0 RELEASE
+- [11.07.2024] - v1.0.0 Initial release
 __________________________________________________________________
 Author: Luis Ibanez"""
 

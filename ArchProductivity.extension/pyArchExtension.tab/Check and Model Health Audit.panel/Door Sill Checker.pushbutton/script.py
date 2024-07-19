@@ -13,7 +13,7 @@ to change the color,select all door, then change the graphic
 override to 'no graphics override'.
 __________________________________________________________________
 Last update:
-- [26.06.2024] - 1.0 RELEASE
+- [26.06.2024] - v1.0.0 Initial release
 __________________________________________________________________
 To-Do:
 - 

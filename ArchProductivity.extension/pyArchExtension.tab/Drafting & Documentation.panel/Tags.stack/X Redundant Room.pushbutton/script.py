@@ -10,7 +10,7 @@ How-to:
 -> Just click on the button
 __________________________________________________________________
 Last update:
-- [09.07.2024] - 1.3 DEBUG information added
+- [09.07.2024] - v1.0.1 DEBUG information added
 __________________________________________________________________
 Author: Luis Ibanez"""
 
