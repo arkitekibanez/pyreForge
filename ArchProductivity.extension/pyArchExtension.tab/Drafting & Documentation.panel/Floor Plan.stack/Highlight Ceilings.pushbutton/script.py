@@ -4,12 +4,17 @@ __doc__ = """Version = 1.0
 Date    = 11.07.2024
 __________________________________________________________________
 Description:
-This script allows users to highlight ceilings in the active view based on their height. 
-Ceilings are colored according to predefined colors based on height ranges from 1.5 to 5 meters.
+This script allows users to highlight ceiling elements in the active view based on their height. 
+Ceilings are assigned colors from a predefined palette, with each color representing a specific 
+height range. Heights are measured from 1.5 to 5 meters, with colors cycling through a set list 
+for different height intervals.
 __________________________________________________________________
 How-to:
-1. Run the script by clicking on the button.
-2. Confirm the operation in the prompted dialog.
+1. Run the script by clicking the button.
+2. Confirm the operation in the warning dialog that appears.
+3. After confirmation, ceilings in the active view will be highlighted based on their height.
+4. You will receive a message confirming the highlight operation.
+5. To revert the colors to the original state, use the provided option to revert colors.
 __________________________________________________________________
 Last update:
 - [11.07.2024] - v1.0.0 Initial release

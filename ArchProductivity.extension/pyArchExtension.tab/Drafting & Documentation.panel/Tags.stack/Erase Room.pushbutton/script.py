@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
-__title__ = "Del Duplicate Rooms"
+__title__ = "Erase Rooms"
 __doc__ = """Version = 1.3
 Date    = 09.07.2024
 __________________________________________________________________
 Description:
-Delete unclosed and redundant rooms
+This script identifies and deletes unclosed or redundant rooms from the Revit model. 
+It checks for rooms placed in the same location or with zero area, and provides 
+confirmation dialogs to proceed with deletion or cancel the operation.
 __________________________________________________________________
 How-to:
--> Just click on the button
+1. Run the script from the Revit UI.
+2. A dialog will display the list of rooms to be deleted.
+3. Confirm the deletion by clicking 'Yes' or cancel the operation by clicking 'No'.
+4. A success or cancellation message will be shown based on your choice.
 __________________________________________________________________
 Last update:
 - [09.07.2024] - v1.0.1 DEBUG information added

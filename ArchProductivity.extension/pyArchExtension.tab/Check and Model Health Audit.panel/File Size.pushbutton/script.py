@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__title__ = "Get Revit \nFile Size"
+__title__ = "Get RVT \nFile Size"
 __doc__ = """Version = 1.0
 Date    = 05.04.2024
 __________________________________________________________________

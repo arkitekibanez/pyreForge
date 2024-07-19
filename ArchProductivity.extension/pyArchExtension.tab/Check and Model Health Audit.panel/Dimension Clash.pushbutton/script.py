@@ -1,4 +1,4 @@
-__title__ = "Dims & Text \nClash Checker"
+__title__ = "Dims&Text \nChecker"
 __doc__ = """Version = 1.0
 Date    = 26.06.2024
 __________________________________________________________________

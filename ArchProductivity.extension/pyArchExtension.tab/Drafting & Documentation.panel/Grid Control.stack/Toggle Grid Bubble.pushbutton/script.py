@@ -1,4 +1,5 @@
 import clr
+
 clr.AddReference('RevitAPI')
 clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
@@ -7,7 +8,7 @@ from System.Windows.Forms import Form, CheckBox, Button, Label
 from System.Drawing import Point, Size
 
 # Title and documentation strings
-__title__ = "Toggle Grid \nBubbles"
+__title__ = "Grid Bubbles \nVisibility"
 __doc__ = """Version: 1.0
 Date: 15.07.2024
 __________________________________________________________________
@@ -30,20 +31,21 @@ How-to:
 4. Click **Show** to show the selected grid bubbles.
 __________________________________________________________________
 Last update:
-- [19.07.2024] - v1.0.0 RELEASE (interchanged Left and Right functionality, added Show button)
+- [19.07.2024] - v1.0.0 interchanged Left and Right functionality, added Show button)
 __________________________________________________________________
 Author: Luis Ibanez"""
+
 
 class MyForm(Form):
     def __init__(self, grids, view):
         self.Text = 'Grid Bubble Visibility'
-        self.Size = Size(375, 300)  # Increase the size to ensure all items are visible
+        self.Size = Size(400, 300)  # Increase the size to ensure all items are visible
         self.grids = grids
         self.view = view
 
         # Warning Label
         self.warning_label = Label()
-        self.warning_label.Text = 'Use the checkboxes to select which grid bubbles to hide or show'
+        self.warning_label.Text = 'Instruction: \nUse the checkboxes to select which side of grid bubbles to hide or show.'
         self.warning_label.AutoSize = True
         self.warning_label.Location = Point(10, 10)
         self.Controls.Add(self.warning_label)
@@ -94,9 +96,9 @@ class MyForm(Form):
         self.show_button.Click += self.show_button_clicked
         self.Controls.Add(self.show_button)
 
-        # Set default buttons
-        self.AcceptButton = self.hide_button
-        self.CancelButton = self.show_button
+        # Remove AcceptButton and CancelButton settings to prevent dialog from closing
+        # self.AcceptButton = self.hide_button
+        # self.CancelButton = self.show_button
 
     def all_checkbox_checked_changed(self, sender, args):
         if self.all_checkbox.Checked:
@@ -115,66 +117,14 @@ class MyForm(Form):
             self.all_checkbox.Checked = False
 
     def hide_button_clicked(self, sender, args):
-        # Start a new transaction
-        t = Transaction(doc, 'Hide Grid Bubbles')
-        t.Start()
-
-        # Get the checkboxes state
-        show_top = self.top_checkbox.Checked
-        show_bottom = self.bottom_checkbox.Checked
-        show_left = self.left_checkbox.Checked
-        show_right = self.right_checkbox.Checked
-
-        # Hide bubbles for each grid based on selected checkboxes
-        for grid in self.grids:
-            # Get the curve of the grid
-            curve = grid.Curve
-            if isinstance(curve, Line):
-                # Transform the curve to the view's coordinate system
-                transform = Transform.Identity
-                transform.BasisX = self.view.RightDirection
-                transform.BasisY = self.view.UpDirection
-                transform.BasisZ = XYZ.BasisZ
-                ep0 = transform.Inverse.OfPoint(curve.GetEndPoint(0))
-                ep1 = transform.Inverse.OfPoint(curve.GetEndPoint(1))
-
-                # Determine which end to hide based on the curve's direction
-                if abs(ep0.X - ep1.X) > abs(ep0.Y - ep1.Y):
-                    # More horizontal than vertical
-                    if ep0.X > ep1.X:
-                        # Grid is horizontal, start point is on the left
-                        if show_right:
-                            grid.HideBubbleInView(DatumEnds.End0, self.view)
-                        if show_left:
-                            grid.HideBubbleInView(DatumEnds.End1, self.view)
-                    else:
-                        # Grid is horizontal, end point is on the left
-                        if show_left:
-                            grid.HideBubbleInView(DatumEnds.End1, self.view)
-                        if show_right:
-                            grid.HideBubbleInView(DatumEnds.End0, self.view)
-                else:
-                    # More vertical than horizontal
-                    if ep0.Y > ep1.Y:
-                        # Grid is vertical, start point is at the bottom
-                        if show_bottom:
-                            grid.HideBubbleInView(DatumEnds.End0, self.view)
-                        if show_top:
-                            grid.HideBubbleInView(DatumEnds.End1, self.view)
-                    else:
-                        # Grid is vertical, end point is at the bottom
-                        if show_top:
-                            grid.HideBubbleInView(DatumEnds.End1, self.view)
-                        if show_bottom:
-                            grid.HideBubbleInView(DatumEnds.End0, self.view)
-
-        # Commit the transaction
-        t.Commit()
-        self.Close()
+        self.toggle_bubbles(False)
 
     def show_button_clicked(self, sender, args):
+        self.toggle_bubbles(True)
+
+    def toggle_bubbles(self, show):
         # Start a new transaction
-        t = Transaction(doc, 'Show Grid Bubbles')
+        t = Transaction(doc, 'Toggle Grid Bubbles')
         t.Start()
 
         # Get the checkboxes state
@@ -183,7 +133,7 @@ class MyForm(Form):
         show_left = self.left_checkbox.Checked
         show_right = self.right_checkbox.Checked
 
-        # Show bubbles for each grid based on selected checkboxes
+        # Hide/Show bubbles for each grid based on selected checkboxes
         for grid in self.grids:
             # Get the curve of the grid
             curve = grid.Curve
@@ -196,42 +146,39 @@ class MyForm(Form):
                 ep0 = transform.Inverse.OfPoint(curve.GetEndPoint(0))
                 ep1 = transform.Inverse.OfPoint(curve.GetEndPoint(1))
 
-                # Determine which end to show based on the curve's direction
+                # Determine which end to hide/show based on the curve's direction
                 if abs(ep0.X - ep1.X) > abs(ep0.Y - ep1.Y):
                     # More horizontal than vertical
                     if ep0.X > ep1.X:
                         # Grid is horizontal, start point is on the left
                         if show_right:
-                            grid.ShowBubbleInView(DatumEnds.End0, self.view)
+                            (grid.ShowBubbleInView if show else grid.HideBubbleInView)(DatumEnds.End0, self.view)
                         if show_left:
-                            grid.ShowBubbleInView(DatumEnds.End1, self.view)
+                            (grid.ShowBubbleInView if show else grid.HideBubbleInView)(DatumEnds.End1, self.view)
                     else:
                         # Grid is horizontal, end point is on the left
                         if show_left:
-                            grid.ShowBubbleInView(DatumEnds.End1, self.view)
+                            (grid.ShowBubbleInView if show else grid.HideBubbleInView)(DatumEnds.End1, self.view)
                         if show_right:
-                            grid.ShowBubbleInView(DatumEnds.End0, self.view)
+                            (grid.ShowBubbleInView if show else grid.HideBubbleInView)(DatumEnds.End0, self.view)
                 else:
                     # More vertical than horizontal
                     if ep0.Y > ep1.Y:
                         # Grid is vertical, start point is at the bottom
                         if show_bottom:
-                            grid.ShowBubbleInView(DatumEnds.End0, self.view)
+                            (grid.ShowBubbleInView if show else grid.HideBubbleInView)(DatumEnds.End0, self.view)
                         if show_top:
-                            grid.ShowBubbleInView(DatumEnds.End1, self.view)
+                            (grid.ShowBubbleInView if show else grid.HideBubbleInView)(DatumEnds.End1, self.view)
                     else:
                         # Grid is vertical, end point is at the bottom
                         if show_top:
-                            grid.ShowBubbleInView(DatumEnds.End1, self.view)
+                            (grid.ShowBubbleInView if show else grid.HideBubbleInView)(DatumEnds.End1, self.view)
                         if show_bottom:
-                            grid.ShowBubbleInView(DatumEnds.End0, self.view)
+                            (grid.ShowBubbleInView if show else grid.HideBubbleInView)(DatumEnds.End0, self.view)
 
         # Commit the transaction
         t.Commit()
-        self.Close()
 
-    def cancel_button_clicked(self, sender, args):
-        self.Close()
 
 # Example usage
 doc = __revit__.ActiveUIDocument.Document

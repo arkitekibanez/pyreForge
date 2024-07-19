@@ -4,12 +4,17 @@ __doc__ = """Version = 1.0
 Date    = 26.06.2024
 __________________________________________________________________
 Description:
-This code  allows users to select one or more levels and create 
-corresponding floor plans, area plans, structural plans, or 
-ceiling plans.
+This script enables users to create multiple types of plans in Autodesk Revit based on selected levels. 
+Users can choose to generate floor plans, area plans, structural plans, or ceiling plans for each selected level.
+The script provides an interface to select levels and plan types, and then creates the corresponding plans 
+in the Revit model.
 __________________________________________________________________
 How-to:
--> Just click on the button
+1. Run the script by clicking the button.
+2. In the form that appears, select one or more levels from the list.
+3. Check the types of plans you want to create (Floor Plan, Area Plan, Structural Plan, Ceiling Plan).
+4. Click "OK" to generate the selected plans.
+5. A success message will confirm that the plans have been created.
 __________________________________________________________________
 Last update:
 - [26.06.2024] - v1.0.0 Initial release

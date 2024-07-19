@@ -3,16 +3,16 @@ __doc__ = """Version = 1.0
 Date    = 26.06.2024
 __________________________________________________________________
 Description:
-Highlight the wall whose base offset is not equal to zero.
+This script highlights walls in the active Revit project where 
+the base offset is not equal to zero. The walls with non-zero 
+base offsets are selected for easy identification.
 __________________________________________________________________
 How-to:
-1. Click on the button to execute.
+1. Run the script by clicking the button.
+2. The script will select walls whose base offset is not zero.
 __________________________________________________________________
 Last update:
 - [26.06.2024] - v1.0.0 Initial release
-__________________________________________________________________
-To-Do:
-- 
 __________________________________________________________________
 Author: Luis Ibanez"""
 

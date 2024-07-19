@@ -1,4 +1,4 @@
-__title__ = "Anno Tags \nClash Checker"
+__title__ = "Anno&Tags \nChecker"
 __doc__ = """Version = 1.2
 Date    = 18.07.2024
 __________________________________________________________________

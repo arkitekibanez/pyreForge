@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Title and documentation strings
 __title__ = "Rename Grids"
 __doc__ = """Version: 1.2

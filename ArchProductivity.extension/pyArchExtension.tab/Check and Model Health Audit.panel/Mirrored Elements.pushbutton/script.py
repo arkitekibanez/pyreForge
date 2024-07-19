@@ -4,12 +4,14 @@ __doc__ = """Version = 1.0
 Date    = 05.04.2024
 __________________________________________________________________
 Description:
-The BIM Interoperability tool report flags mirrored elements as 
-not being part of best practice. This code will loop through and 
-highlight the mirrored 3D elements in the active view
+This script highlights mirrored 3D elements in the active Revit view. 
+It identifies and selects elements that have been flagged by the 
+BIM Interoperability tool for not adhering to best practices.
 __________________________________________________________________
 How-to:
--> Just click on the button
+1. Run the script by clicking the button.
+2. The script will select mirrored 3D elements in the active view.
+3. If no mirrored elements are found, a message will be displayed.
 __________________________________________________________________
 Last update:
 - [05.04.2024] - v1.0.0 Initial release

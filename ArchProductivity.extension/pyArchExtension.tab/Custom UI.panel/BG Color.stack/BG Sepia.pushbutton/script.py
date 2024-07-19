@@ -3,10 +3,11 @@ __doc__ = """Version: 1.1
 Date: 05.04.2024
 _____________________________________________________________________
 Description:
-Change Revit background color to Sepia.
+This script changes the background color to sepia tone.
 _____________________________________________________________________
 How-to:
-- Just click on the button to change the background color.
+- Run the script by clicking the button. 
+- The background color will change to sepia tone.
 _____________________________________________________________________
 Last update:
 - [05.04.2024] - v1.0.0 Initial release

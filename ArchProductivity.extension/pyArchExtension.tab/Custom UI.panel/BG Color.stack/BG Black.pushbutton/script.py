@@ -4,10 +4,11 @@ __doc__ = """Version: 1.1
 Date: 08.07.2024
 _____________________________________________________________________
 Description:
-This script changes the Revit background color to black.
+This script changes the background color to dark gray.
 _____________________________________________________________________
 How-to:
-- Just click on the button to change the background color.
+- Run the script by clicking the button. 
+- The background color will change to dark gray.
 _____________________________________________________________________
 Last update:
 - [08.07.2024] - v1.0.0 Initial release

@@ -3,12 +3,16 @@ __doc__ = """Version = 1.2
 Date    = 18.07.2024
 __________________________________________________________________
 Description:
-This script retrieves the total number of loadable families loaded, 
-along with their individual file sizes. It provides a useful metric 
-for monitoring and optimizing Revit file sizes.
+This script retrieves the total number of loadable families loaded 
+in the active Revit project and calculates their individual file 
+sizes. It provides useful metrics for monitoring and optimizing 
+Revit file sizes.
 __________________________________________________________________
 How-to:
--> Just click on the button
+1. Run the script by clicking the button.
+2. A warning dialog will appear. Confirm to proceed.
+3. The script will list all loadable families along with their file sizes in a TaskDialog.
+4. If file sizes cannot be determined, 'Unknown size' will be shown.
 __________________________________________________________________
 Last update:
 - [18.07.2024] - v1.0.1 Added file size calculation for each family and arranged output in specified format

@@ -4,18 +4,18 @@ __doc__ = """Version = 1.0
 Date    = 05.04.2024
 __________________________________________________________________
 Description:
-This script counts the total number of sheets in the active Revit 
-project, and categorizes them into two groups: 
-active sheets with views and placeholder sheets.
+This script counts the total number of sheets in the active Revit project and categorizes them into two groups:
+1. Active sheets with views.
+2. Placeholder sheets with no views.
+The script then displays this information in a TaskDialog.
 __________________________________________________________________
 How-to:
--> Just click on the button
+1. Run the script by clicking the button.
+2. A TaskDialog will appear showing the total number of sheets, 
+the count of sheets with views, and the count of placeholder sheets.
 __________________________________________________________________
 Last update:
 - [05.04.2024] - 1.0.0 Initial Release
-__________________________________________________________________
-To-Do:
-- 
 __________________________________________________________________
 Author: Luis Ibanez"""
 
