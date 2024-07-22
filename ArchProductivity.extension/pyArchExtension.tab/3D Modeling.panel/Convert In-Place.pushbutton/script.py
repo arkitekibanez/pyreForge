@@ -11,19 +11,19 @@ clr.AddReference('RevitServices')
 uidoc = __revit__.ActiveUIDocument
 doc = uidoc.Document
 
-__title__ = "Convert \nIn-Place \n(WIP)"
-__doc__ = """Version = 1.0
-Date    = 05.04.2024
+__title__ = "Convert\nIn-Place\n(WIP)"
+__doc__ = """Version=1.0
+Date=05.04.2024
 __________________________________________________________________
 Description:
 Work in Progress, current script creates a duplicate of the selected
-in place family.
+in-place family.
 __________________________________________________________________
 How-to:
 -> Just click on the button
 __________________________________________________________________
 Last update:
-- [05.04.2024] - v 1.0.0 Work-in Progress
+-[05.04.2024]-v1.0.0 Work-in-Progress
 __________________________________________________________________
 To-Do:
 Code to be further developed.
@@ -91,9 +91,9 @@ def create_loadable_generic_family(template_path):
                 transaction.RollBack()
                 TaskDialog.Show("Error", "Failed to create loadable generic family: " + str(ex))
                 return None
-        else:
-            TaskDialog.Show("Error", "Failed to create family document.")
-            return None
+            else:
+                TaskDialog.Show("Error", "Failed to create family document.")
+                return None
     except Exception as ex:
         TaskDialog.Show("Error", "Failed to create loadable generic family: " + str(ex))
         return None
@@ -109,15 +109,15 @@ def main():
     if result == TaskDialogResult.Ok:
         element = select_model_in_place_family()
         if element and element.Category.Name == "Generic Models" and element.StructuralType == StructuralType.NonStructural:
-            template_path = r"C:\Users\ibanezl3110\AppData\Roaming\CustomRevitExtension\ArchProductivity.extension\CustomControl.tab\Modeling.panel\Convert In-Place.pushbutton\Generic Model.rft"
+            template_path = r"C:\Users\ibanezl3110\AppData\Roaming\CustomRevitExtension\ArchProductivity.extension\CustomControl.tab\Modeling.panel\ConvertIn-Place.pushbutton\GenericModel.rft"
             loaded_family = create_loadable_generic_family(template_path)
             if loaded_family:
                 TaskDialog.Show("Success", "Loadable generic family created and loaded successfully.")
+            else:
+                TaskDialog.Show("Error",
+                                "No valid model-in-place family selected or selected element is not a generic model-in-place.")
         else:
-            TaskDialog.Show("Error",
-                            "No valid model-in-place family selected or selected element is not a generic model in-place.")
-    else:
-        TaskDialog.Show("Info", "Operation cancelled by user.")
+            TaskDialog.Show("Info", "Operation cancelled by user.")
 
 
 if __name__ == '__main__':
