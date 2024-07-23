@@ -1,14 +1,14 @@
 {
-    "builtin": "False",
-    "default_enabled": "True",
+    "builtin": "True",
+    "enabled": "True",
     "type": "extension",
     "rocket_mode_compatible": "True",
     "name": "PyreForge",
     "description": "A set of custom productivity tools for Revit.",
     "author": "Luis Ibanez",
     "author_profile": "https://github.com/arkitekibanez",
-    "url": "https://github.com/arkitekibanez/pyreForge",
-    "website": "https://github.com/arkitekibanez/pyreForge",
+    "url": "https://github.com/arkitekibanez/pyreForge.git",
+    "website": "https://github.com/arkitekibanez/pyreForge.git",
     "image": "",
     "dependencies": []
 }
