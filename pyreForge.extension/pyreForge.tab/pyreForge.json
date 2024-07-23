@@ -1,0 +1,14 @@
+{
+    "builtin": "False",
+    "enabled": "True",
+    "type": "extension",
+    "rocket_mode_compatible": "True",
+    "name": "PyreForge",
+    "description": "A set of custom productivity tools for pyRevit.",
+    "author": "Luis Ibanez",
+    "author_profile": "https://www.linkedin.com/in/lribanez/",
+    "url": "https://github.com/arkitekibanez/pyreForge.git",
+    "website": "https://github.com/arkitekibanez/pyreForge.git",
+    "image": "",
+    "dependencies": []
+}
