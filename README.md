@@ -6,4 +6,4 @@ How to use:
 2. Unzip the downloaded file.
 3. Copy the link and paste it to PyRevit Custom Extension Directory
 4. Default location should look like this:
-   C:\\Users\username\AppData\Roaming\pyarchextension
+   C:\\Users\username\AppData\Roaming\pyarchextension-master
