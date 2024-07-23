@@ -1,4 +1,4 @@
-__title__ = "Family>Pascal or Sentence Case with Types"
+__title__ = "Family>Pascal"
 __doc__ = """Version = 1.0
 Date    = 26.06.2024
 __________________________________________________________________
@@ -14,7 +14,7 @@ Last update:
 - [26.06.2024] - v1.0.0 Initial release
 __________________________________________________________________
 To-Do:
-- 
+- To fix the duplication of suffix.
 __________________________________________________________________
 Author: Luis Ibanez"""
 
