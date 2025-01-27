@@ -1,4 +1,4 @@
-__title__ = "Door Suffix"
+__title__ = "Door_xX"
 __doc__ = """Version: 1.0
 Date: 05.04.2024
 __________________________________________________________________
@@ -17,7 +17,6 @@ Author: Luis Ibanez"""
 
 from Autodesk.Revit.DB import *
 
-
 def set_door_numbers(doc):
     # Start a transaction to make modifications
     t = Transaction(doc, "Set Door Numbers")
@@ -35,23 +34,24 @@ def set_door_numbers(doc):
             if room_number:
                 # Get the bounding box of the room
                 bb = room.get_BoundingBox(None)
-                outline = Outline(bb.Min, bb.Max)
-                bb_filter = BoundingBoxIntersectsFilter(outline)
+                if bb is not None:
+                    outline = Outline(bb.Min, bb.Max)
+                    bb_filter = BoundingBoxIntersectsFilter(outline)
 
-                # Find all doors in the room
-                doors_collector = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Doors).WherePasses(
-                    bb_filter).WhereElementIsNotElementType()
+                    # Find all doors in the room
+                    doors_collector = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Doors).WherePasses(
+                        bb_filter).WhereElementIsNotElementType()
 
-                # Initialize suffix with 'A' for each room
-                suffix = 'A'
+                    # Initialize suffix with 'A' for each room
+                    suffix = 'A'
 
-                for door in doors_collector:
-                    # Set the door number as room number with suffix
-                    door_number = "{}{}".format(room_number, suffix)
-                    door.get_Parameter(BuiltInParameter.DOOR_NUMBER).Set(door_number)
+                    for door in doors_collector:
+                        # Set the door number as room number with suffix
+                        door_number = room_number + suffix
+                        door.get_Parameter(BuiltInParameter.DOOR_NUMBER).Set(door_number)
 
-                    # Increment suffix to next letter
-                    suffix = chr(ord(suffix) + 1)
+                        # Increment suffix to next letter
+                        suffix = chr(ord(suffix) + 1)
 
         # Commit the transaction
         t.Commit()

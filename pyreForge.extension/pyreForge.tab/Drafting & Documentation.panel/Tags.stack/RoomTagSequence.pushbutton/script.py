@@ -1,6 +1,6 @@
 __title__ = "Room Order"
-__doc__ = """Version = 1.0
-Date    = 05.04.2024
+__doc__ = """Version = 1.1
+Date    = 22.01.2025
 __________________________________________________________________
 Description:
 Change the room tags from left to right sequence.
@@ -9,7 +9,7 @@ How-to:
 -> Just click on the button
 __________________________________________________________________
 Last update:
-- [05.04.2024] - v1.0.0 Initial release
+- [22.01.2025] - v1.1.0 Fixed the issue with BoundingBox and updated metadata.
 __________________________________________________________________
 To-Do:
 - 
@@ -46,12 +46,14 @@ def set_room_numbers(doc):
         rooms_collector = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Rooms).WhereElementIsNotElementType()
 
         # Sort rooms by their X-coordinate (left to right)
-        rooms = sorted(rooms_collector, key=lambda room: room.Location.Point.X)
+        rooms = sorted(rooms_collector, key=lambda room: room.Location.Point.X if room.Location and hasattr(room.Location, 'Point') else float('inf'))
 
         for room in rooms:
             # Get the room's level
             room_level_id = room.LevelId
             room_level = doc.GetElement(room_level_id)
+            if room_level is None:
+                continue  # Skip the room if no level is assigned
             level_name = room_level.Name
             match = re.search(r'\d+', level_name)  # Search for one or more digits in the level name
             if match:
@@ -73,23 +75,24 @@ def set_room_numbers(doc):
 
             # Get the bounding box of the room
             bb = room.get_BoundingBox(None)
-            outline = Outline(bb.Min, bb.Max)
-            bb_filter = BoundingBoxIntersectsFilter(outline)
+            if bb is not None:  # Check if BoundingBox is valid
+                outline = Outline(bb.Min, bb.Max)
+                bb_filter = BoundingBoxIntersectsFilter(outline)
 
-            # Find all doors in the room
-            doors_collector = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Doors).WherePasses(
-                bb_filter).WhereElementIsNotElementType()
+                # Find all doors in the room
+                doors_collector = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Doors).WherePasses(
+                    bb_filter).WhereElementIsNotElementType()
 
-            # Initialize suffix with 'A' for each room
-            suffix = 'A'
+                # Initialize suffix with 'A' for each room
+                suffix = 'A'
 
-            for door in doors_collector:
-                # Set the door number as room number with suffix
-                door_number = "{}{}".format(room_number, suffix)
-                door.get_Parameter(BuiltInParameter.DOOR_NUMBER).Set(door_number)
+                for door in doors_collector:
+                    # Set the door number as room number with suffix
+                    door_number = "{}{}".format(room_number, suffix)
+                    door.get_Parameter(BuiltInParameter.DOOR_NUMBER).Set(door_number)
 
-                # Increment suffix to next letter
-                suffix = chr(ord(suffix) + 1)
+                    # Increment suffix to next letter
+                    suffix = chr(ord(suffix) + 1)
 
         # Commit the transaction
         t.Commit()
@@ -97,7 +100,6 @@ def set_room_numbers(doc):
         # Rollback the transaction if an exception occurs
         t.RollBack()
         print("An error occurred: {}".format(ex))
-
 
 # Usage:
 doc = __revit__.ActiveUIDocument.Document

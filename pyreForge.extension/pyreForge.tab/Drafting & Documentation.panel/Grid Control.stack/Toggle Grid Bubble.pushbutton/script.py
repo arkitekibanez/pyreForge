@@ -1,3 +1,4 @@
+# Import necessary Revit API classes
 import clr
 
 clr.AddReference('RevitAPI')
@@ -34,7 +35,6 @@ Last update:
 - [19.07.2024] - v1.0.0 interchanged Left and Right functionality, added Show button)
 __________________________________________________________________
 Author: Luis Ibanez"""
-
 
 class MyForm(Form):
     def __init__(self, grids, view):
@@ -106,7 +106,10 @@ class MyForm(Form):
             self.bottom_checkbox.Checked = True
             self.left_checkbox.Checked = True
             self.right_checkbox.Checked = True
-            self.none_checkbox.Checked = False
+        else:
+            # Uncheck 'All' if any of the individual checkboxes is unchecked
+            if not (self.top_checkbox.Checked and self.bottom_checkbox.Checked and self.left_checkbox.Checked and self.right_checkbox.Checked):
+                self.all_checkbox.Checked = False
 
     def none_checkbox_checked_changed(self, sender, args):
         if self.none_checkbox.Checked:

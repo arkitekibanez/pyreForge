@@ -1,10 +1,11 @@
 layout:
   - Custom UI
-  - Check and Model Health Audit
-  - Project Browser & Sheet Management
+  - Project Browser & Sheets
+  - Model Check
+  - 2D Clash Checker
   - Drafting & Documentation
-  - Link Control
   - 3D Modeling
+  - Link Control
   - Resources
   - Reload
 
